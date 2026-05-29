@@ -1,8 +1,8 @@
 
-page 50100 "CustomerList"
+page 50100 "Customer Data Card"
 {
     Caption = 'Customer Data';
-    PageType = List;
+    PageType = card;
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "customer data";
@@ -12,7 +12,7 @@ page 50100 "CustomerList"
     {
         area(Content)
         {
-            repeater(GroupName)
+            group(groupName)
             {
                 field("Customer no"; Rec."Customer no")
                 {
