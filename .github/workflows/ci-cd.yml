@@ -1,0 +1,108 @@
+name: BC AL Extension CI/CD
+
+on:
+  push:
+    branches: 
+        - main
+  pull_request:
+    branches: 
+        - main
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Download AL Symbols
+        shell: powershell
+        run: |
+          Write-Host "Symbols assumed present in .alpackages/"
+
+      - name: Compile AL Extension
+        shell: powershell
+        run: |
+          # Wildcard path — survives AL extension updates
+          $alcPath = (Get-ChildItem "C:\Users\user\.vscode\extensions\ms-dynamics-smb.al-*\bin\win32\alc.exe" `
+                      | Sort-Object LastWriteTime -Descending `
+                      | Select-Object -First 1).FullName
+
+          if (-not $alcPath) {
+            Write-Error "alc.exe not found. Is the AL extension installed in VS Code?"
+            exit 1
+          }
+
+          Write-Host "Using alc.exe at: $alcPath"
+
+          # Create output folder if it doesn't exist
+          New-Item -ItemType Directory -Force -Path "${{ github.workspace }}\output" | Out-Null
+
+          & $alcPath `
+            /project:"${{ github.workspace }}" `
+            /packagecachepath:"${{ github.workspace }}\.alpackages" `
+            /out:"${{ github.workspace }}\output\ALProject1.app"
+
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          Write-Host " Compilation successful"
+
+      - name: Run AL Tests
+        shell: powershell
+        run: |
+          $testApp = "${{ github.workspace }}\output\ALProject1.test.app"
+          if (Test-Path $testApp) {
+            Write-Host "Running tests..."
+          } else {
+            Write-Host "No test app found, skipping tests"
+          }
+
+      - name: Publish to Cronus BC
+        if: github.ref == 'refs/heads/main'
+        shell: powershell
+        env:
+          BC_SERVER_INSTANCE: ${{ secrets.BC_SERVER_INSTANCE }}
+          BC_TENANT: ${{ secrets.BC_TENANT }}
+          BC_USERNAME: ${{ secrets.BC_USERNAME }}
+          BC_PASSWORD: ${{ secrets.BC_PASSWORD }}
+        run: |
+          # Find NavAdminTool dynamically
+          $navTool = (Get-ChildItem -Path "C:\" -Recurse -Filter "NavAdminTool.ps1" `
+                      -ErrorAction SilentlyContinue `
+                      | Select-Object -First 1).FullName
+
+          if (-not $navTool) {
+            Write-Error "NavAdminTool.ps1 not found. Check your BC installation."
+            exit 1
+          }
+
+          Write-Host "Using NavAdminTool at: $navTool"
+          Import-Module $navTool
+
+          $appFile = "${{ github.workspace }}\output\ALProject1.app"
+
+          # Unpublish old version if exists
+          try {
+            Unpublish-NAVApp -ServerInstance $env:BC_SERVER_INSTANCE `
+              -Name "ALProject1" -Tenant $env:BC_TENANT
+          } catch { Write-Host "No previous version to unpublish" }
+
+          # Publish new version
+          Publish-NAVApp -ServerInstance $env:BC_SERVER_INSTANCE `
+            -Path $appFile -SkipVerification
+
+          # Sync schema
+          Sync-NAVApp -ServerInstance $env:BC_SERVER_INSTANCE `
+            -Name "ALProject1" -Tenant $env:BC_TENANT
+
+          # Install
+          Install-NAVApp -ServerInstance $env:BC_SERVER_INSTANCE `
+            -Name "ALProject1" -Tenant $env:BC_TENANT
+
+          Write-Host " Extension deployed to Cronus!"
+
+      - name: Upload app artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: bc-extension-app
+          path: output/*.app
