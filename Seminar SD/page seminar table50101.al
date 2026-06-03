@@ -1,8 +1,8 @@
-page 50101 "Seminar Setup"
+page 50101 "CSD Seminar Setup"
 {
     Caption = 'Seminar Setup';
     PageType = Card;
-    SourceTable = "Seminar Setup";
+    SourceTable = "CSD Seminar Setup";
     UsageCategory = Administration;
     ApplicationArea = All;
     DeleteAllowed = false;

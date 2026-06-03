@@ -1,4 +1,4 @@
-table 50101 "Seminar Setup"
+table 50101 "CSD Seminar Setup"
 {
     Caption = 'Seminar Setup';
     DataClassification = CustomerContent;
