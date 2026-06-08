@@ -6,3 +6,6 @@ Thumbs.db
 .DS_Store
 RadToolsHL.json
 .alpackages/
+
+# AL symbol packages (too large for GitHub)
+.alpackages/
