@@ -75,43 +75,7 @@ jobs:
             Write-Host "No test app found, skipping tests"
           }
 
-      - name: Publish to CRONUS BC
-        shell: powershell
-        env:
-          BC_CONTAINER: ${{ secrets.BC_CONTAINER_NAME }}
-          BC_USERNAME: ${{ secrets.BC_USERNAME }}
-          BC_PASSWORD: ${{ secrets.BC_PASSWORD }}
-        run: |
-          # Import BcContainerHelper — designed for Docker BC containers
-          Import-Module BcContainerHelper
-
-          $securePass = ConvertTo-SecureString $env:BC_PASSWORD -AsPlainText -Force
-          $credential = New-Object PSCredential($env:BC_USERNAME, $securePass)
-
-          # Find the compiled .app file
-          $appFile = Get-ChildItem "$env:GITHUB_WORKSPACE\output\*.app" |
-                     Select-Object -First 1
-
-          if (-not $appFile) {
-            Write-Error "No .app file found in output folder!"
-            exit 1
-          }
-
-          Write-Host "Container : $env:BC_CONTAINER"
-          Write-Host "App file  : $($appFile.Name)"
-          Write-Host "User      : $env:BC_USERNAME"
-
-          # Publish directly to your Docker BC container
-          Publish-BcContainerApp `
-            -containerName $env:BC_CONTAINER `
-            -credential $credential `
-            -appFile $appFile.FullName `
-            -skipVerification `
-            -sync `
-            -install
-
-          Write-Host "Successfully published to CRONUS BC!"
-          Write-Host "App: $($appFile.Name)"
+      
 
       - name: Upload app artifact
         uses: actions/upload-artifact@v4
