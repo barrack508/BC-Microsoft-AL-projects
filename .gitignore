@@ -9,3 +9,7 @@ RadToolsHL.json
 
 # AL symbol packages (too large for GitHub)
 .alpackages/
+
+.alpackages/
+*.app
+output/
