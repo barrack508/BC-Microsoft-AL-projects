@@ -3,7 +3,7 @@ table 50102 "ECitizen Passport App"
     DataClassification = CustomerContent;
     Caption = 'eCitizen Passport Application';
 
-    fields
+    field
     {
         field(1; "Application No."; Code[20]) { Caption = 'Application No.'; }
         field(2; "Passport Owner"; Enum "Passport Owner Type") { Caption = 'Passport Owner'; }
