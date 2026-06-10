@@ -1,0 +1,280 @@
+[33mcommit f6f281ccf160e2c9495bf9363d3c2250064397e4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: barrack508 <barrackkeronche@gmail.com>
+Date:   Mon Jun 8 12:34:28 2026 +0300
+
+    Add .alpackages symbols
+
+ .../Microsoft_Application_28.1.49838.50268.app     |  Bin [31m0[m -> [32m18669[m bytes
+ ...Microsoft_Base Application_28.1.49838.50268.app |  Bin [31m0[m -> [32m48460676[m bytes
+ ...rosoft_Business Foundation_28.1.49838.50268.app |  Bin [31m0[m -> [32m476844[m bytes
+ ...crosoft_System Application_28.1.49838.50268.app |  Bin [31m0[m -> [32m15998304[m bytes
+ .alpackages/Microsoft_System_28.0.50197.0.app      |  Bin [31m0[m -> [32m4515264[m bytes
+ .alpackages/oracleJdk-26/LICENSE                   |  118 [32m+[m
+ .alpackages/oracleJdk-26/README                    |    6 [32m+[m
+ .../bin/api-ms-win-core-console-l1-1-0.dll         |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-console-l1-2-0.dll         |  Bin [31m0[m -> [32m22056[m bytes
+ .../bin/api-ms-win-core-datetime-l1-1-0.dll        |  Bin [31m0[m -> [32m22072[m bytes
+ .../bin/api-ms-win-core-debug-l1-1-0.dll           |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-errorhandling-l1-1-0.dll   |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-fibers-l1-1-0.dll          |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-fibers-l1-1-1.dll          |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-core-file-l1-1-0.dll            |  Bin [31m0[m -> [32m26192[m bytes
+ .../bin/api-ms-win-core-file-l1-2-0.dll            |  Bin [31m0[m -> [32m22064[m bytes
+ .../bin/api-ms-win-core-file-l2-1-0.dll            |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-handle-l1-1-0.dll          |  Bin [31m0[m -> [32m22072[m bytes
+ .../bin/api-ms-win-core-heap-l1-1-0.dll            |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-core-interlocked-l1-1-0.dll     |  Bin [31m0[m -> [32m22056[m bytes
+ .../bin/api-ms-win-core-kernel32-legacy-l1-1-1.dll |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-core-libraryloader-l1-1-0.dll   |  Bin [31m0[m -> [32m22056[m bytes
+ .../bin/api-ms-win-core-localization-l1-2-0.dll    |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-core-memory-l1-1-0.dll          |  Bin [31m0[m -> [32m22072[m bytes
+ .../bin/api-ms-win-core-namedpipe-l1-1-0.dll       |  Bin [31m0[m -> [32m22080[m bytes
+ .../api-ms-win-core-processenvironment-l1-1-0.dll  |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-processthreads-l1-1-0.dll  |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-core-processthreads-l1-1-1.dll  |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-profile-l1-1-0.dll         |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-core-rtlsupport-l1-1-0.dll      |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-string-l1-1-0.dll          |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-synch-l1-1-0.dll           |  Bin [31m0[m -> [32m22072[m bytes
+ .../bin/api-ms-win-core-synch-l1-2-0.dll           |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-sysinfo-l1-1-0.dll         |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-sysinfo-l1-2-0.dll         |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-timezone-l1-1-0.dll        |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-core-util-l1-1-0.dll            |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-crt-conio-l1-1-0.dll            |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-crt-convert-l1-1-0.dll          |  Bin [31m0[m -> [32m26192[m bytes
+ .../bin/api-ms-win-crt-environment-l1-1-0.dll      |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-crt-filesystem-l1-1-0.dll       |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-crt-heap-l1-1-0.dll             |  Bin [31m0[m -> [32m22072[m bytes
+ .../bin/api-ms-win-crt-locale-l1-1-0.dll           |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-crt-math-l1-1-0.dll             |  Bin [31m0[m -> [32m30272[m bytes
+ .../bin/api-ms-win-crt-multibyte-l1-1-0.dll        |  Bin [31m0[m -> [32m30288[m bytes
+ .../bin/api-ms-win-crt-private-l1-1-0.dll          |  Bin [31m0[m -> [32m75344[m bytes
+ .../bin/api-ms-win-crt-process-l1-1-0.dll          |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-crt-runtime-l1-1-0.dll          |  Bin [31m0[m -> [32m26192[m bytes
+ .../bin/api-ms-win-crt-stdio-l1-1-0.dll            |  Bin [31m0[m -> [32m26192[m bytes
+ .../bin/api-ms-win-crt-string-l1-1-0.dll           |  Bin [31m0[m -> [32m26192[m bytes
+ .../bin/api-ms-win-crt-time-l1-1-0.dll             |  Bin [31m0[m -> [32m22072[m bytes
+ .../bin/api-ms-win-crt-utility-l1-1-0.dll          |  Bin [31m0[m -> [32m22096[m bytes
+ .alpackages/oracleJdk-26/bin/attach.dll            |  Bin [31m0[m -> [32m30376[m bytes
+ .alpackages/oracleJdk-26/bin/awt.dll               |  Bin [31m0[m -> [32m1440424[m bytes
+ .alpackages/oracleJdk-26/bin/dt_shmem.dll          |  Bin [31m0[m -> [32m37544[m bytes
+ .alpackages/oracleJdk-26/bin/dt_socket.dll         |  Bin [31m0[m -> [32m37032[m bytes
+ .alpackages/oracleJdk-26/bin/extnet.dll            |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/fontmanager.dll       |  Bin [31m0[m -> [32m962728[m bytes
+ .alpackages/oracleJdk-26/bin/freetype.dll          |  Bin [31m0[m -> [32m562856[m bytes
+ .alpackages/oracleJdk-26/bin/instrument.dll        |  Bin [31m0[m -> [32m52904[m bytes
+ .alpackages/oracleJdk-26/bin/j2gss.dll             |  Bin [31m0[m -> [32m53416[m bytes
+ .alpackages/oracleJdk-26/bin/j2pcsc.dll            |  Bin [31m0[m -> [32m26792[m bytes
+ .alpackages/oracleJdk-26/bin/j2pkcs11.dll          |  Bin [31m0[m -> [32m84648[m bytes
+ .alpackages/oracleJdk-26/bin/jaas.dll              |  Bin [31m0[m -> [32m28840[m bytes
+ .alpackages/oracleJdk-26/bin/jabswitch.exe         |  Bin [31m0[m -> [32m45736[m bytes
+ .alpackages/oracleJdk-26/bin/jaccessinspector.exe  |  Bin [31m0[m -> [32m106664[m bytes
+ .alpackages/oracleJdk-26/bin/jaccesswalker.exe     |  Bin [31m0[m -> [32m71336[m bytes
+ .alpackages/oracleJdk-26/bin/jar.exe               |  Bin [31m0[m -> [32m24232[m bytes
+ .alpackages/oracleJdk-26/bin/jarsigner.exe         |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/java.dll              |  Bin [31m0[m -> [32m117928[m bytes
+ .alpackages/oracleJdk-26/bin/java.exe              |  Bin [31m0[m -> [32m54952[m bytes
+ .alpackages/oracleJdk-26/bin/javaaccessbridge.dll  |  Bin [31m0[m -> [32m313512[m bytes
+ .alpackages/oracleJdk-26/bin/javac.exe             |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/javadoc.exe           |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/javajpeg.dll          |  Bin [31m0[m -> [32m185512[m bytes
+ .alpackages/oracleJdk-26/bin/javap.exe             |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/javaw.exe             |  Bin [31m0[m -> [32m54952[m bytes
+ .alpackages/oracleJdk-26/bin/jawt.dll              |  Bin [31m0[m -> [32m21672[m bytes
+ .alpackages/oracleJdk-26/bin/jcmd.exe              |  Bin [31m0[m -> [32m24232[m bytes
+ .alpackages/oracleJdk-26/bin/jconsole.exe          |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/jdb.exe               |  Bin [31m0[m -> [32m24232[m bytes
+ .alpackages/oracleJdk-26/bin/jdeprscan.exe         |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/jdeps.exe             |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/jdwp.dll              |  Bin [31m0[m -> [32m242344[m bytes
+ .alpackages/oracleJdk-26/bin/jfr.exe               |  Bin [31m0[m -> [32m24232[m bytes
+ .alpackages/oracleJdk-26/bin/jhsdb.exe             |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/jimage.dll            |  Bin [31m0[m -> [32m3[33mcommit f6f281ccf160e2c9495bf9363d3c2250064397e4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: barrack508 <barrackkeronche@gmail.com>
+Date:   Mon Jun 8 12:34:28 2026 +0300
+
+    Add .alpackages symbols
+
+ .../Microsoft_Application_28.1.49838.50268.app     |  Bin [31m0[m -> [32m18669[m bytes
+ ...Microsoft_Base Application_28.1.49838.50268.app |  Bin [31m0[m -> [32m48460676[m bytes
+ ...rosoft_Business Foundation_28.1.49838.50268.app |  Bin [31m0[m -> [32m476844[m bytes
+ ...crosoft_System Application_28.1.49838.50268.app |  Bin [31m0[m -> [32m15998304[m bytes
+ .alpackages/Microsoft_System_28.0.50197.0.app      |  Bin [31m0[m -> [32m4515264[m bytes
+ .alpackages/oracleJdk-26/LICENSE                   |  118 [32m+[m
+ .alpackages/oracleJdk-26/README                    |    6 [32m+[m
+ .../bin/api-ms-win-core-console-l1-1-0.dll         |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-console-l1-2-0.dll         |  Bin [31m0[m -> [32m22056[m bytes
+ .../bin/api-ms-win-core-datetime-l1-1-0.dll        |  Bin [31m0[m -> [32m22072[m bytes
+ .../bin/api-ms-win-core-debug-l1-1-0.dll           |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-errorhandling-l1-1-0.dll   |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-fibers-l1-1-0.dll          |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-fibers-l1-1-1.dll          |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-core-file-l1-1-0.dll            |  Bin [31m0[m -> [32m26192[m bytes
+ .../bin/api-ms-win-core-file-l1-2-0.dll            |  Bin [31m0[m -> [32m22064[m bytes
+ .../bin/api-ms-win-core-file-l2-1-0.dll            |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-handle-l1-1-0.dll          |  Bin [31m0[m -> [32m22072[m bytes
+ .../bin/api-ms-win-core-heap-l1-1-0.dll            |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-core-interlocked-l1-1-0.dll     |  Bin [31m0[m -> [32m22056[m bytes
+ .../bin/api-ms-win-core-kernel32-legacy-l1-1-1.dll |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-core-libraryloader-l1-1-0.dll   |  Bin [31m0[m -> [32m22056[m bytes
+ .../bin/api-ms-win-core-localization-l1-2-0.dll    |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-core-memory-l1-1-0.dll          |  Bin [31m0[m -> [32m22072[m bytes
+ .../bin/api-ms-win-core-namedpipe-l1-1-0.dll       |  Bin [31m0[m -> [32m22080[m bytes
+ .../api-ms-win-core-processenvironment-l1-1-0.dll  |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-processthreads-l1-1-0.dll  |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-core-processthreads-l1-1-1.dll  |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-profile-l1-1-0.dll         |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-core-rtlsupport-l1-1-0.dll      |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-string-l1-1-0.dll          |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-synch-l1-1-0.dll           |  Bin [31m0[m -> [32m22072[m bytes
+ .../bin/api-ms-win-core-synch-l1-2-0.dll           |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-sysinfo-l1-1-0.dll         |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-sysinfo-l1-2-0.dll         |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-core-timezone-l1-1-0.dll        |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-core-util-l1-1-0.dll            |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-crt-conio-l1-1-0.dll            |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-crt-convert-l1-1-0.dll          |  Bin [31m0[m -> [32m26192[m bytes
+ .../bin/api-ms-win-crt-environment-l1-1-0.dll      |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-crt-filesystem-l1-1-0.dll       |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-crt-heap-l1-1-0.dll             |  Bin [31m0[m -> [32m22072[m bytes
+ .../bin/api-ms-win-crt-locale-l1-1-0.dll           |  Bin [31m0[m -> [32m22096[m bytes
+ .../bin/api-ms-win-crt-math-l1-1-0.dll             |  Bin [31m0[m -> [32m30272[m bytes
+ .../bin/api-ms-win-crt-multibyte-l1-1-0.dll        |  Bin [31m0[m -> [32m30288[m bytes
+ .../bin/api-ms-win-crt-private-l1-1-0.dll          |  Bin [31m0[m -> [32m75344[m bytes
+ .../bin/api-ms-win-crt-process-l1-1-0.dll          |  Bin [31m0[m -> [32m22080[m bytes
+ .../bin/api-ms-win-crt-runtime-l1-1-0.dll          |  Bin [31m0[m -> [32m26192[m bytes
+ .../bin/api-ms-win-crt-stdio-l1-1-0.dll            |  Bin [31m0[m -> [32m26192[m bytes
+ .../bin/api-ms-win-crt-string-l1-1-0.dll           |  Bin [31m0[m -> [32m26192[m bytes
+ .../bin/api-ms-win-crt-time-l1-1-0.dll             |  Bin [31m0[m -> [32m22072[m bytes
+ .../bin/api-ms-win-crt-utility-l1-1-0.dll          |  Bin [31m0[m -> [32m22096[m bytes
+ .alpackages/oracleJdk-26/bin/attach.dll            |  Bin [31m0[m -> [32m30376[m bytes
+ .alpackages/oracleJdk-26/bin/awt.dll               |  Bin [31m0[m -> [32m1440424[m bytes
+ .alpackages/oracleJdk-26/bin/dt_shmem.dll          |  Bin [31m0[m -> [32m37544[m bytes
+ .alpackages/oracleJdk-26/bin/dt_socket.dll         |  Bin [31m0[m -> [32m37032[m bytes
+ .alpackages/oracleJdk-26/bin/extnet.dll            |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/fontmanager.dll       |  Bin [31m0[m -> [32m962728[m bytes
+ .alpackages/oracleJdk-26/bin/freetype.dll          |  Bin [31m0[m -> [32m562856[m bytes
+ .alpackages/oracleJdk-26/bin/instrument.dll        |  Bin [31m0[m -> [32m52904[m bytes
+ .alpackages/oracleJdk-26/bin/j2gss.dll             |  Bin [31m0[m -> [32m53416[m bytes
+ .alpackages/oracleJdk-26/bin/j2pcsc.dll            |  Bin [31m0[m -> [32m26792[m bytes
+ .alpackages/oracleJdk-26/bin/j2pkcs11.dll          |  Bin [31m0[m -> [32m84648[m bytes
+ .alpackages/oracleJdk-26/bin/jaas.dll              |  Bin [31m0[m -> [32m28840[m bytes
+ .alpackages/oracleJdk-26/bin/jabswitch.exe         |  Bin [31m0[m -> [32m45736[m bytes
+ .alpackages/oracleJdk-26/bin/jaccessinspector.exe  |  Bin [31m0[m -> [32m106664[m bytes
+ .alpackages/oracleJdk-26/bin/jaccesswalker.exe     |  Bin [31m0[m -> [32m71336[m bytes
+ .alpackages/oracleJdk-26/bin/jar.exe               |  Bin [31m0[m -> [32m24232[m bytes
+ .alpackages/oracleJdk-26/bin/jarsigner.exe         |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/java.dll              |  Bin [31m0[m -> [32m117928[m bytes
+ .alpackages/oracleJdk-26/bin/java.exe              |  Bin [31m0[m -> [32m54952[m bytes
+ .alpackages/oracleJdk-26/bin/javaaccessbridge.dll  |  Bin [31m0[m -> [32m313512[m bytes
+ .alpackages/oracleJdk-26/bin/javac.exe             |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/javadoc.exe           |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/javajpeg.dll          |  Bin [31m0[m -> [32m185512[m bytes
+ .alpackages/oracleJdk-26/bin/javap.exe             |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/javaw.exe             |  Bin [31m0[m -> [32m54952[m bytes
+ .alpackages/oracleJdk-26/bin/jawt.dll              |  Bin [31m0[m -> [32m21672[m bytes
+ .alpackages/oracleJdk-26/bin/jcmd.exe              |  Bin [31m0[m -> [32m24232[m bytes
+ .alpackages/oracleJdk-26/bin/jconsole.exe          |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/jdb.exe               |  Bin [31m0[m -> [32m24232[m bytes
+ .alpackages/oracleJdk-26/bin/jdeprscan.exe         |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/jdeps.exe             |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/jdwp.dll              |  Bin [31m0[m -> [32m242344[m bytes
+ .alpackages/oracleJdk-26/bin/jfr.exe               |  Bin [31m0[m -> [32m24232[m bytes
+ .alpackages/oracleJdk-26/bin/jhsdb.exe             |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/jimage.dll            |  Bin [31m0[m -> [32m33448[m bytes
+ .alpackages/oracleJdk-26/bin/jimage.exe            |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/jinfo.exe             |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/jli.dll               |  Bin [31m0[m -> [32m84648[m bytes
+ .alpackages/oracleJdk-26/bin/jlink.exe             |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/jmap.exe              |  Bin [31m0[m -> [32m24232[m bytes
+ .alpackages/oracleJdk-26/bin/jmod.exe              |  Bin [31m0[m -> [32m24232[m bytes
+ .alpackages/oracleJdk-26/bin/jnativescan.exe       |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/jpackage.dll          |  Bin [31m0[m -> [32m149160[m bytes
+ .alpackages/oracleJdk-26/bin/jpackage.exe          |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/jps.exe               |  Bin [31m0[m -> [32m24232[m bytes
+ .alpackages/oracleJdk-26/bin/jshell.exe            |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/jsound.dll            |  Bin [31m0[m -> [32m61608[m bytes
+ .alpackages/oracleJdk-26/bin/jstack.exe            |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/jstat.exe             |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/jstatd.exe            |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/jsvml.dll             |  Bin [31m0[m -> [32m869544[m bytes
+ .alpackages/oracleJdk-26/bin/jwebserver.exe        |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/keytool.exe           |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/kinit.exe             |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/klist.exe             |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/ktab.exe              |  Bin [31m0[m -> [32m24232[m bytes
+ .alpackages/oracleJdk-26/bin/lcms.dll              |  Bin [31m0[m -> [32m259240[m bytes
+ .alpackages/oracleJdk-26/bin/management.dll        |  Bin [31m0[m -> [32m29864[m bytes
+ .alpackages/oracleJdk-26/bin/management_agent.dll  |  Bin [31m0[m -> [32m25256[m bytes
+ .alpackages/oracleJdk-26/bin/management_ext.dll    |  Bin [31m0[m -> [32m36520[m bytes
+ .alpackages/oracleJdk-26/bin/mlib_image.dll        |  Bin [31m0[m -> [32m520872[m bytes
+ .alpackages/oracleJdk-26/bin/msvcp140.dll          |  Bin [31m0[m -> [32m575568[m bytes
+ .alpackages/oracleJdk-26/bin/net.dll               |  Bin [31m0[m -> [32m62120[m bytes
+ .alpackages/oracleJdk-26/bin/nio.dll               |  Bin [31m0[m -> [32m82088[m bytes
+ .alpackages/oracleJdk-26/bin/prefs.dll             |  Bin [31m0[m -> [32m25768[m bytes
+ .alpackages/oracleJdk-26/bin/rmi.dll               |  Bin [31m0[m -> [32m21160[m bytes
+ .alpackages/oracleJdk-26/bin/rmiregistry.exe       |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/saproc.dll            |  Bin [31m0[m -> [32m40104[m bytes
+ .alpackages/oracleJdk-26/bin/serialver.exe         |  Bin [31m0[m -> [32m24744[m bytes
+ .alpackages/oracleJdk-26/bin/server/classes.jsa    |  Bin [31m0[m -> [32m16056320[m bytes
+ .../oracleJdk-26/bin/server/classes_coh.jsa        |  Bin [31m0[m -> [32m16777216[m bytes
+ .../oracleJdk-26/bin/server/classes_nocoops.jsa    |  Bin [31m0[m -> [32m16515072[m bytes
+ .../bin/server/classes_nocoops_coh.jsa             |  Bin [31m0[m -> [32m17235968[m bytes
+ .alpackages/oracleJdk-26/bin/server/jvm.dll        |  Bin [31m0[m -> [32m15031464[m bytes
+ .alpackages/oracleJdk-26/bin/splashscreen.dll      |  Bin [31m0[m -> [32m217256[m bytes
+ .alpackages/oracleJdk-26/bin/sspi_bridge.dll       |  Bin [31m0[m -> [32m45224[m bytes
+ .alpackages/oracleJdk-26/bin/sunmscapi.dll         |  Bin [31m0[m -> [32m49832[m bytes
+ .alpackages/oracleJdk-26/bin/syslookup.dll         |  Bin [31m0[m -> [32m28840[m bytes
+ .alpackages/oracleJdk-26/bin/ucrtbase.dll          |  Bin [31m0[m -> [32m1361464[m bytes
+ .alpackages/oracleJdk-26/bin/vcruntime140.dll      |  Bin [31m0[m -> [32m120400[m bytes
+ .alpackages/oracleJdk-26/bin/vcruntime140_1.dll    |  Bin [31m0[m -> [32m49776[m bytes
+ .alpackages/oracleJdk-26/bin/verify.dll            |  Bin [31m0[m -> [32m55464[m bytes
+ .alpackages/oracleJdk-26/bin/w2k_lsa_auth.dll      |  Bin [31m0[m -> [32m32424[m bytes
+ .../oracleJdk-26/bin/windowsaccessbridge-64.dll    |  Bin [31m0[m -> [32m72360[m bytes
+ .alpackages/oracleJdk-26/bin/zip.dll               |  Bin [31m0[m -> [32m84136[m bytes
+ .../conf/jaxp-strict.properties.template           |  123 [32m+[m
+ .alpackages/oracleJdk-26/conf/jaxp.properties      |  200 [32m++[m
+ .alpackages/oracleJdk-26/conf/logging.properties   |   63 [32m+[m
+ .../oracleJdk-26/conf/management/jmxremote.access  |   79 [32m+[m
+ .../conf/management/jmxremote.password.template    |  115 [32m+[m
+ .../conf/management/management.properties          |  326 [32m+++[m
+ .alpackages/oracleJdk-26/conf/net.properties       |  166 [32m++[m
+ .../oracleJdk-26/conf/security/java.security       | 1692 [32m+++++++++++++[m
+ .../oracleJdk-26/conf/security/policy/README.txt   |   54 [32m+[m
+ .../policy/limited/default_US_export.policy        |    6 [32m+[m
+ .../security/policy/limited/default_local.policy   |   14 [32m+[m
+ .../security/policy/limited/exempt_local.policy    |   13 [32m+[m
+ .../policy/unlimited/default_US_export.policy      |    6 [32m+[m
+ .../security/policy/unlimited/default_local.policy |    6 [32m+[m
+ .alpackages/oracleJdk-26/conf/sound.properties     |   39 [32m+[m
+ .../src/Table/Tab50100.CustomerTable.al            |   63 [32m+[m
+ .../oracleJdk-26/include/classfile_constants.h     |  588 [32m+++++[m
+ .alpackages/oracleJdk-26/include/jawt.h            |  356 [32m+++[m
+ .alpackages/oracleJdk-26/include/jdwpTransport.h   |  276 [32m++[m
+ .alpackages/oracleJdk-26/include/jni.h             | 2013 [32m+++++++++++++++[m
+ .alpackages/oracleJdk-26/include/jvmti.h           | 2663 [32m++++++++++++++++++++[m
+ .alpackages/oracleJdk-26/include/jvmticmlr.h       |  115 [32m+[m
+ .../include/win32/bridge/AccessBridgeCallbacks.h   |   92 [32m+[m
+ .../include/win32/bridge/AccessBridgeCalls.h       |  724 [32m++++++[m
+ .../include/win32/bridge/AccessBridgePackages.h    | 2217 [32m++++++++++++++++[m
+ .alpackages/oracleJdk-26/include/win32/jawt_md.h   |   59 [32m+[m
+ .alpackages/oracleJdk-26/include/win32/jni_md.h    |   38 [32m+[m
+ .alpackages/oracleJdk-26/jmods/java.base.jmod      |  Bin [31m0[m -> [32m22463586[m bytes
+ .alpackages/oracleJdk-26/jmods/java.compiler.jmod  |  Bin [31m0[m -> [32m136342[m bytes
+ .../oracleJdk-26/jmods/java.datatransfer.jmod      |  Bin [31m0[m -> [32m53622[m bytes
+ .alpackages/oracleJdk-26/jmods/java.desktop.jmod   |  Bin [31m0[m -> [32m12550911[m bytes
+ .../oracleJdk-26/jmods/java.instrument.jmod        |  Bin [31m0[m -> [32m50015[m bytes
+ .alpackages/oracleJdk-26/jmods/java.logging.jmod   |  Bin [31m0[m -> [32m103324[m bytes
+ .../oracleJdk-26/jmods/java.management.jmod        |  Bin [31m0[m -> [32m811989[m bytes
+ .../oracleJdk-26/jmods/java.management.rmi.jmod    |  Bin [31m0[m -> [32m81021[m bytes
+ .alpackages/oracleJdk-26/jmods/java.naming.jmod    |  Bin [31m0[m -> [32m471681[m bytes
+ .alpackages/oracleJdk-26/jmods/java.net.http.jmod  |  Bin [31m0[m -> [32m1683617[m bytes
+ .alpackages/oracleJdk-26/jmods/java.prefs.jmod     |  Bin [31m0[m -> [32m58536[m bytes
+ .alpackages/oracleJdk-26/jmods/java.rmi.jmod       |  Bin [31m0[m -> [32m245907[m bytes
+ .alpackages/oracleJdk-26/jmods/java.scripting.jmod |  Bin [31m0[m -> [32m19618[m bytes
+ .alpackages/oracleJdk-26/jmods/java.se.jmod        |  Bin [31m0[m -> [32m4681[m bytes
+ .../oracleJdk-26/jmods/java.security.jgss.jmod     |  Bin [31m0[m -> [32m687231[m bytes
+ .../oracleJdk-26/jmods/java.security.sasl.jmod     |  Bin [31m0[m -> [32m83144[m bytes
+ .../oracleJdk-26/jmods/java.smartcardio.jmod       |  Bin [31m0[m -> [32m64715[m bytes
+ .alpackages/oracleJdk-26/jmods/java.s
