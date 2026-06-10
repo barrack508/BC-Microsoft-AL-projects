@@ -75,49 +75,43 @@ jobs:
             Write-Host "No test app found, skipping tests"
           }
 
-      - name: Publish to Cronus BC
-        if: github.ref == 'refs/heads/main'
+      - name: Publish to CRONUS BC
         shell: powershell
         env:
-          BC_SERVER_INSTANCE: ${{ secrets.BC_SERVER_INSTANCE }}
-          BC_TENANT: ${{ secrets.BC_TENANT }}
+          BC_CONTAINER: ${{ secrets.BC_CONTAINER_NAME }}
           BC_USERNAME: ${{ secrets.BC_USERNAME }}
           BC_PASSWORD: ${{ secrets.BC_PASSWORD }}
         run: |
-          # Find NavAdminTool dynamically
-          $navTool = (Get-ChildItem -Path "C:\" -Recurse -Filter "NavAdminTool.ps1" `
-                      -ErrorAction SilentlyContinue `
-                      | Select-Object -First 1).FullName
+          # Import BcContainerHelper — designed for Docker BC containers
+          Import-Module BcContainerHelper
 
-          if (-not $navTool) {
-            Write-Error "NavAdminTool.ps1 not found. Check your BC installation."
+          $securePass = ConvertTo-SecureString $env:BC_PASSWORD -AsPlainText -Force
+          $credential = New-Object PSCredential($env:BC_USERNAME, $securePass)
+
+          # Find the compiled .app file
+          $appFile = Get-ChildItem "$env:GITHUB_WORKSPACE\output\*.app" |
+                     Select-Object -First 1
+
+          if (-not $appFile) {
+            Write-Error "No .app file found in output folder!"
             exit 1
           }
 
-          Write-Host "Using NavAdminTool at: $navTool"
-          Import-Module $navTool
+          Write-Host "Container : $env:BC_CONTAINER"
+          Write-Host "App file  : $($appFile.Name)"
+          Write-Host "User      : $env:BC_USERNAME"
 
-          $appFile = "$env:GITHUB_WORKSPACE\output\ALProject1.app"
+          # Publish directly to your Docker BC container
+          Publish-BcContainerApp `
+            -containerName $env:BC_CONTAINER `
+            -credential $credential `
+            -appFile $appFile.FullName `
+            -skipVerification `
+            -sync `
+            -install
 
-          # Unpublish old version if exists
-          try {
-            Unpublish-NAVApp -ServerInstance $env:BC_SERVER_INSTANCE `
-              -Name "ALProject1" -Tenant $env:BC_TENANT
-          } catch { Write-Host "No previous version to unpublish" }
-
-          # Publish new version
-          Publish-NAVApp -ServerInstance $env:BC_SERVER_INSTANCE `
-            -Path $appFile -SkipVerification
-
-          # Sync schema
-          Sync-NAVApp -ServerInstance $env:BC_SERVER_INSTANCE `
-            -Name "ALProject1" -Tenant $env:BC_TENANT
-
-          # Install
-          Install-NAVApp -ServerInstance $env:BC_SERVER_INSTANCE `
-            -Name "ALProject1" -Tenant $env:BC_TENANT
-
-          Write-Host " Extension deployed to Cronus!"
+          Write-Host "Successfully published to CRONUS BC!"
+          Write-Host "App: $($appFile.Name)"
 
       - name: Upload app artifact
         uses: actions/upload-artifact@v4
