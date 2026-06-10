@@ -26,33 +26,29 @@ jobs:
         run: |
           # Find alc.exe from VS Code AL extension
           $alcPath = Get-ChildItem "$env:USERPROFILE\.vscode\extensions\ms-dynamics-smb.al-*\bin\win32\alc.exe" |
-                    Sort-Object FullName -Descending |
-                    Select-Object -First 1
+                     Sort-Object FullName -Descending |
+                     Select-Object -First 1
 
           if (-not $alcPath) {
-            Write-Error "❌ alc.exe not found."
+            Write-Error "alc.exe not found."
             exit 1
           }
 
-          Write-Host "✅ Using alc.exe at: $($alcPath.FullName)"
+          Write-Host "Using alc.exe at: $($alcPath.FullName)"
 
-          $app       = Get-Content "$env:GITHUB_WORKSPACE\app.json" | ConvertFrom-Json
-          $outputDir = "$env:GITHUB_WORKSPACE\output"
-          $outputApp = "$outputDir\$($app.publisher)_$($app.name)_$($app.version).app"
-
-          # Hardcoded packages path
+          $app          = Get-Content "$env:GITHUB_WORKSPACE\app.json" | ConvertFrom-Json
+          $outputDir    = "$env:GITHUB_WORKSPACE\output"
+          $outputApp    = $outputDir + "\" + $app.publisher + "_" + $app.name + "_" + $app.version + ".app"
           $packagesPath = "C:\Users\user\OneDrive\Apps\ALProject1\.alpackages"
 
           New-Item -ItemType Directory -Force -Path $outputDir | Out-Null
 
-          Write-Host "📦 Symbols : $packagesPath"
-          Write-Host "📁 Project : $env:GITHUB_WORKSPACE"
-          Write-Host "📤 Output  : $outputApp"
+          Write-Host "Symbols : $packagesPath"
+          Write-Host "Project : $env:GITHUB_WORKSPACE"
+          Write-Host "Output  : $outputApp"
 
-          # Verify the packages path exists before compiling
           if (-not (Test-Path $packagesPath)) {
-            Write-Error "❌ .alpackages not found at: $packagesPath"
-            Write-Error "   Open VS Code and run 'AL: Download Symbols' first."
+            Write-Error "alpackages not found at: $packagesPath - Run AL: Download Symbols in VS Code first."
             exit 1
           }
 
@@ -62,17 +58,17 @@ jobs:
             /out:"$outputApp"
 
           if ($LASTEXITCODE -ne 0) {
-            Write-Error "❌ Compilation failed!"
+            Write-Error "Compilation failed!"
             exit 1
           }
 
-          Write-Host "✅ Compilation successful!"
-          Write-Host "   Output: $outputApp"
+          Write-Host "Compilation successful!"
+          Write-Host "Output file: $outputApp"
 
       - name: Run AL Tests
         shell: powershell
         run: |
-          $testApp = "${{ github.workspace }}\output\ALProject1.test.app"
+          $testApp = "$env:GITHUB_WORKSPACE\output\ALProject1.test.app"
           if (Test-Path $testApp) {
             Write-Host "Running tests..."
           } else {
@@ -101,7 +97,7 @@ jobs:
           Write-Host "Using NavAdminTool at: $navTool"
           Import-Module $navTool
 
-          $appFile = "${{ github.workspace }}\output\ALProject1.app"
+          $appFile = "$env:GITHUB_WORKSPACE\output\ALProject1.app"
 
           # Unpublish old version if exists
           try {
