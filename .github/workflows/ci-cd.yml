@@ -118,3 +118,4 @@ jobs:
         with:
           name: bc-extension-app
           path: output/*.app
+# Updated: removed publish step
