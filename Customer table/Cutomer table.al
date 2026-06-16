@@ -19,6 +19,12 @@ table 50100 "customer data"
             Caption = 'Contacts';
             DataClassification = ToBeClassified;
         }
+        field(4; "Status"; Option)
+        {
+            OptionMembers = Active,Inactive;
+            Caption = 'Status';
+            DataClassification = ToBeClassified;
+        }
     }
     keys
     {
