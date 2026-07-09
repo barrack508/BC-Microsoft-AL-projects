@@ -24,7 +24,7 @@ jobs:
       - name: Compile AL Extension
         shell: powershell
         run: |
-          # Find alc.exe from VS Code AL extension
+          # Find alc.exe from VS Code AL extensiona
           $alcPath = Get-ChildItem "$env:USERPROFILE\.vscode\extensions\ms-dynamics-smb.al-*\bin\win32\alc.exe" |
                      Sort-Object FullName -Descending |
                      Select-Object -First 1
@@ -75,10 +75,34 @@ jobs:
             Write-Host "No test app found, skipping tests"
           }
 
-      #deleted publish step
+      
 
-      - name: Upload app artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: bc-extension-app
-          path: output/*.app
+      - name: Publish to local BC container
+        shell: powershell
+        run: |
+          Import-Module BcContainerHelper -ErrorAction Stop
+
+          $app       = Get-Content "$env:GITHUB_WORKSPACE\app.json" | ConvertFrom-Json
+          $outputApp = "$env:GITHUB_WORKSPACE\output\" + $app.publisher + "_" + $app.name + "_" + $app.version + ".app"
+
+          if (-not (Test-Path $outputApp)) {
+            Write-Error "App file not found at: $outputApp"
+            exit 1
+          }
+
+          $securePassword = ConvertTo-SecureString "${{ secrets.BC_PASSWORD }}" -AsPlainText -Force
+          $credential     = New-Object System.Management.Automation.PSCredential("${{ secrets.BC_USERNAME }}", $securePassword)
+
+          Write-Host "Publishing $outputApp to container 'bcserver'..."
+
+          Publish-BcContainerApp `
+            -containerName "bcserver" `
+            -appFile $outputApp `
+            -credential $credential `
+            -skipVerification `
+            -sync `
+            -syncMode Add `
+            -install `
+            -useDevEndpoint:$false
+
+          Write-Host "Publish complete."

@@ -34,7 +34,7 @@ This document lists all fields from `passportmain table.al` and highlights the e
 28. `field(28)` — `E-mail Address` — `Text[80]`
 29. `field(29)` — `Estate / Sublocation` — `Text[100]`
 30. `field(30)` — `Hse. No./ Kijiji/ Village` — `Text[100]`
-31. `field(31)` — `Fathers Status` — `Enum "Parent Status"`
+31. f`ield(31)` — `Fathers Status` — `Enum "Parent Status"`
 32. `field(32)` — `Fathers Full Name` — `Text[150]`
 33. `field(33)` — `Fathers ID Card Number` — `Code[30]`
 34. `field(34)` — `Fathers Passport Number` — `Code[30]`
