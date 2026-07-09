@@ -82,8 +82,19 @@ jobs:
         run: |
           Import-Module BcContainerHelper -ErrorAction Stop
 
-          $app       = Get-Content "$env:GITHUB_WORKSPACE\app.json" | ConvertFrom-Json
-          $outputApp = "$env:GITHUB_WORKSPACE\output\" + $app.publisher + "_" + $app.name + "_" + $app.version + ".app"
+          $appJsonPath = "$env:GITHUB_WORKSPACE\app.json"
+          $app = Get-Content $appJsonPath -Raw | ConvertFrom-Json
+
+          # Bump version using the GitHub run number so each publish is a unique upgrade
+          $versionParts    = $app.version -split '\.'
+          $versionParts[3] = "${{ github.run_number }}"
+          $newVersion      = $versionParts -join '.'
+          $app.version     = $newVersion
+          $app | ConvertTo-Json -Depth 10 | Set-Content $appJsonPath
+
+          Write-Host "Version bumped to: $newVersion"
+
+          $outputApp = "$env:GITHUB_WORKSPACE\output\" + $app.publisher + "_" + $app.name + "_" + $newVersion + ".app"
 
           if (-not (Test-Path $outputApp)) {
             Write-Error "App file not found at: $outputApp"
