@@ -112,7 +112,7 @@ jobs:
             -credential $credential `
             -skipVerification `
             -sync `
-            -syncMode Add `
+            -syncMode forcesync `
             -install `
             -useDevEndpoint:$false
 
