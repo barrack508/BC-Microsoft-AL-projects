@@ -16,6 +16,20 @@ jobs:
       - name: Checkout repository code
         uses: actions/checkout@v4
 
+      - name: Bump app version
+        shell: powershell
+        run: |
+          $appJsonPath = "$env:GITHUB_WORKSPACE\app.json"
+          $app = Get-Content $appJsonPath -Raw | ConvertFrom-Json
+
+          $versionParts    = $app.version -split '\.'
+          $versionParts[3] = "${{ github.run_number }}"
+          $newVersion      = $versionParts -join '.'
+          $app.version     = $newVersion
+          $app | ConvertTo-Json -Depth 10 | Set-Content $appJsonPath
+
+          Write-Host "Version bumped to: $newVersion"
+
       - name: Download AL Symbols
         shell: powershell
         run: |
@@ -24,7 +38,6 @@ jobs:
       - name: Compile AL Extension
         shell: powershell
         run: |
-          # Find alc.exe from VS Code AL extensiona
           $alcPath = Get-ChildItem "$env:USERPROFILE\.vscode\extensions\ms-dynamics-smb.al-*\bin\win32\alc.exe" |
                      Sort-Object FullName -Descending |
                      Select-Object -First 1
@@ -75,26 +88,13 @@ jobs:
             Write-Host "No test app found, skipping tests"
           }
 
-      
-
       - name: Publish to local BC container
         shell: powershell
         run: |
           Import-Module BcContainerHelper -ErrorAction Stop
 
-          $appJsonPath = "$env:GITHUB_WORKSPACE\app.json"
-          $app = Get-Content $appJsonPath -Raw | ConvertFrom-Json
-
-          # Bump version using the GitHub run number so each publish is a unique upgrade
-          $versionParts    = $app.version -split '\.'
-          $versionParts[3] = "${{ github.run_number }}"
-          $newVersion      = $versionParts -join '.'
-          $app.version     = $newVersion
-          $app | ConvertTo-Json -Depth 10 | Set-Content $appJsonPath
-
-          Write-Host "Version bumped to: $newVersion"
-
-          $outputApp = "$env:GITHUB_WORKSPACE\output\" + $app.publisher + "_" + $app.name + "_" + $newVersion + ".app"
+          $app       = Get-Content "$env:GITHUB_WORKSPACE\app.json" | ConvertFrom-Json
+          $outputApp = "$env:GITHUB_WORKSPACE\output\" + $app.publisher + "_" + $app.name + "_" + $app.version + ".app"
 
           if (-not (Test-Path $outputApp)) {
             Write-Error "App file not found at: $outputApp"
@@ -117,3 +117,9 @@ jobs:
             -useDevEndpoint:$false
 
           Write-Host "Publish complete."
+
+      - name: Upload app artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: bc-extension-app
+          path: output/*.app
