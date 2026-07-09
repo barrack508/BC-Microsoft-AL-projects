@@ -25,11 +25,7 @@ table 50100 "customer data"
             Caption = 'Status';
             DataClassification = ToBeClassified;
         }
-        field(5; "Created Date"; Date)
-        {
-            Caption = 'Created Date';
-            DataClassification = ToBeClassified;
-        }
+
     }
     keys
     {
